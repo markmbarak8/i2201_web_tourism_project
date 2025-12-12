@@ -1,0 +1,112 @@
+body{
+    margin: 0%;
+}
+
+nav {
+    padding: 2vh 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+   
+    background: linear-gradient(135deg, #d6c4c4, #686d8b, #7c5c5c00);
+    background-size: 200% 200%;
+    animation: gentlePulse 5s ease-in-out infinite;
+    
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: box-shadow 0.2s ease;
+}
+
+@keyframes gentlePulse {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+nav:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.247);
+}
+.icon{
+    margin-left: 1%;
+}
+
+.links{
+    width: 20%;
+display: flex;
+justify-content: space-around;
+}
+
+.link {
+    position: relative;
+    padding: 1% 1%;
+    transition: all 0.3s ease;
+}
+
+.link a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 10% 15%;
+    border-radius: 4px;
+}
+
+/* Hover animation for links */
+.link a:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Underline animation */
+.link::after {
+   
+    position: absolute;
+    width: 0;
+    height: 1%;
+    bottom: 0;
+    left: 60%;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.link:hover::after {
+    width: 80%;
+}
+
+/* Active link style */
+
+
+
+
+@media (max-width: 768px) {
+    .links {
+        width: 50%;
+    }
+    
+    .link a {
+        padding: 4px 8px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .links {
+        width: 70%;
+    }
+    
+    .link a {
+        padding: 3px 6px;
+        font-size: 12px;
+    }
+}

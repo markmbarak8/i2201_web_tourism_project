@@ -1,12 +1,76 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        main{
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    flex-direction: column;
     
-</body>
-</html>
+}
+       .centered-line {
+            text-align: center;
+            margin: 50px auto;
+            font-family: Arial, sans-serif;
+            width: 100%;
+        }
+        
+        .line-title {
+            position: relative;
+            color: #333;
+            margin: 30px 0;
+            font-size: 24px;
+        }
+        
+        /* Add line on both sides */
+        .line-title:before,
+        .line-title:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #ccc;
+        }
+        
+        .line-title:before {
+            left: 0;
+        }
+        
+        .line-title:after {
+            right: 0;
+        }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav>
+        <div class="icon">
+          <img
+            src="earth-svgprop-com.svg"
+            alt="Earth icon"
+            height="32"
+            width="32"
+          />
+        </div>
+        <div class="links">
+          <span class="link" > <a   href="index.html">home</a></span>
+          <span class="link"> <a href="gallery.html">gallery</a></span>
+          <span class="link"> <a href="feedback.html">feedback</a> </span>
+       
+        </div>
+         
+      </nav>
+ 
+     <div class="centered-line">
+        <div class="line-title">EXPLORE THE WORLD</div>
+        <p>CHOOSE YOUR FIRST STEP.<br>brbrbrbrb</p>
+    </div>
+
+
+    </main>
+    </body>
+    </html>
