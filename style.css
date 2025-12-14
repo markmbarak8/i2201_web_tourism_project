@@ -128,4 +128,52 @@ justify-content: space-around;
 #backToTopBtn:hover {
   background-color: #555;
 }
- C:\Users\moham\OneDrive\Desktop\web project collage LU\i2201_web_tourism_project\monuments\Castle_Neuschwanstein_photos\photo_3.jpg
+#footercont{
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+footer{
+    background-color: black;
+    color:white;
+    
+    padding-top: 1.6em;
+    padding-bottom:1.6em;
+}
+#footerlinks a{
+    text-decoration: none;
+    color:white;
+}
+#footerlinks a:hover{
+    color:rgb(148, 5, 148);
+}
+#footerlinks li{
+    list-style: none;
+    padding: 10px;
+}
+
+#footerlinks input{
+    padding-left:20px
+}
+
+#footerform #subbutton{
+    float:right;
+    background-color: white;
+    color:grey;
+    border:1px solid black;
+    border-radius: 3px;
+    font-family:sans-serif;
+
+    font-weight: bold;
+    font-size: small;
+    padding: 10px;
+}
+
+#footerform{
+    width:30%;
+}
+
+footer p{
+    font-size:xx-small;
+    margin-left: 20%;
+}
