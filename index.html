@@ -4,73 +4,728 @@
     <title>Home</title>
     <link rel="stylesheet" href="style.css" />
     <style>
-        main{
-    padding: 0%;
-    margin: 0%;
-    display: flex;
-    flex-direction: column;
-    
-}
-       .centered-line {
-            text-align: center;
-            margin: 50px auto;
-            font-family: Arial, sans-serif;
-            width: 100%;
+      body {
+        padding: 0%;
+        margin: 0%;
+        display: flex;
+        flex-direction: column;
+        background-color: #ecebe5dc;
+      }
+
+      /* CAROUSEL STYLES */
+
+      .carousel {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        margin: 0;
+      }
+
+      .carousel-container {
+        width: 100%;
+        height: 90vh;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        transform: scale(1.02);
+        pointer-events: none;
+      }
+
+      .slide.active {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+      }
+
+      .slide::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40%;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.5) 0%,
+          transparent 100%
+        );
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        image-rendering: crisp-edges;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        filter: brightness(1.02) contrast(1.05);
+        will-change: transform;
+      }
+
+      .slide:hover img {
+        transform: scale(1.03);
+        transition: transform 0.6s ease;
+      }
+
+      .slide-text {
+        position: absolute;
+        bottom: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        color: #fff;
+        font-size: 1.5rem;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 1.5rem 2rem;
+        border-radius: 10px;
+        width: 70%;
+        z-index: 2;
+      }
+
+      .slide-text p {
+        margin-top: 12px;
+        font-size: 1.4rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: white;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      }
+      /* EXPLORE BUTTON */
+
+      .explore-button {
+        display: inline-block;
+        padding: 14px 32px;
+        border: 2px solid white;
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+        z-index: 3;
+      }
+
+      .explore-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.7s ease;
+      }
+
+      .explore-button:hover::before {
+        left: 100%;
+      }
+
+      .explore-button:hover {
+        background: white;
+        color: black;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      /* CAROUSEL NAVIGATION BUTTONS */
+
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 1%;
+        cursor: pointer;
+        border-radius: 50%;
+        width: 2%;
+        height: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        z-index: 10;
+      }
+
+      .carousel-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .carousel-prev {
+        left: 2%;
+      }
+
+      .carousel-next {
+        right: 2%;
+      }
+      /* DOTS INDICATOR */
+
+      .carousel-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
+
+      .carousel-dot {
+        width: 7%;
+        height: 7%;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      .carousel-dot.active {
+        background: white;
+        transform: scale(1.2);
+      }
+
+      .carousel-dot:hover {
+        background: rgba(255, 255, 255, 0.8);
+      }
+      /* RESPONSIVE */
+
+      @media (max-width: 768px) {
+        .carousel-container {
+          height: 50vh;
         }
+        .slide-text {
+          width: 90%;
+          bottom: 15%;
+          font-size: 1.2rem;
+          padding: 1rem;
+        }
+        .slide-text p {
+          font-size: 1rem;
+        }
+        .explore-button {
+          padding: 10px 20px;
+          font-size: 0.9rem;
+        }
+        .carousel-btn {
+          padding: 10px;
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+        }
+        .carousel-dots {
+          bottom: 10px;
+        }
+      }
+      .centered-line {
+        text-align: center;
+        margin: 50px auto;
+        font-family: Arial, sans-serif;
+        width: 100%;
+      }
+
+      .line-title {
+        position: relative;
+        color: #333;
+        margin: 30px 0;
+        font-size: 24px;
+      }
+      /* Add line on both sides */
+
+      .line-title:before,
+      .line-title:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 40%;
+        height: 1px;
+        background: #ccc;
+      }
+
+      .line-title:before {
+        left: 0;
+      }
+
+      .line-title:after {
+        right: 0;
+      }
+
+      .site-header {
+        width: 100%;
+        min-height: 40vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+          url("home_images/siena-house-drone-sunset-1600x1200-1-1400x800.jpg")
+            center / cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .header-content {
+        max-width: 900px;
+        text-align: center;
+        color: #fff;
+      }
+      .header-content p {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .header-content h1 {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        margin-bottom: 1rem;
+        letter-spacing: 2px;
+      }
+
+      .header-content p {
+        font-size: 200%;
+        line-height: 1.7;
+        opacity: 0.95;
+      }
+
+      .reveal-scale {
+        opacity: 0;
+        transform: scale(0.9);
+        transition: opacity 0.9s ease, transform 0.9s ease;
+      }
+
+      .reveal-scale.active {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Header animation (fade + slide up) */
+      .reveal-up {
+        opacity: 0;
+        transform: translateY(80px);
+        transition: opacity 1s ease, transform 1s ease;
+      }
+
+      .reveal-up.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .about-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        padding: 5rem 8%;
+        align-items: center;
+      }
+
+      .about-image img {
+        width: 100%;
+        height: 100%;
+        max-height: 420px;
+        object-fit: cover;
+        border-radius: 14px;
+      }
+
+      .about-text h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #222;
+      }
+
+      .about-text p {
+        font-size: 150%;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 1rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .about-section {
+          grid-template-columns: 1fr;
+          padding: 3rem 6%;
+        }
+
+        .about-image img {
+          max-height: 300px;
+        }
+
+        .about-text {
+          text-align: center;
+        }
+      }
+      /* SCROLL ANIMATION BASE */
+      .reveal {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: opacity 0.9s ease, transform 0.9s ease;
+        will-change: opacity, transform;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Slight variation for image */
+      .reveal-left {
+        transform: translateX(-60px);
+      }
+
+      .reveal-left.active {
+        transform: translateX(0);
+      }
+      .baalbeck {
+        background-color: #dbe9dd;
+      }
+      article {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+      }
+      .article1-img {
+        width: 50%;
+         position: sticky;
+  top: 20px; /* distance from top when sticking */
+  height: fit-content
+      }
+      .article1-img img {
+        width: 100%;
         
-        .line-title {
-            position: relative;
-            color: #333;
-            margin: 30px 0;
-            font-size: 24px;
-        }
-        
-        /* Add line on both sides */
-        .line-title:before,
-        .line-title:after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            width: 40%;
-            height: 1px;
-            background: #ccc;
-        }
-        
-        .line-title:before {
-            left: 0;
-        }
-        
-        .line-title:after {
-            right: 0;
-        }
+      }
+      .article1-text {
+        width: 50%;
+      }
     </style>
   </head>
+
   <body>
-    <main>
-      <nav>
-        <div class="icon">
+    <nav>
+      <div class="icon">
+        <img
+          src="earth-svgprop-com.svg"
+          alt="Earth icon"
+          height="32"
+          width="32"
+        />
+      </div>
+      <div class="links">
+        <span class="link"> <a href="index.html">home</a></span>
+        <span class="link"> <a href="gallery.html">gallery</a></span>
+        <span class="link"> <a href="feedback.html">feedback</a> </span>
+      </div>
+    </nav>
+    <!-- CAROUSEL SECTION -->
+    <div class="carousel">
+      <div class="carousel-container">
+        <!-- Slide 1 -->
+        <div class="slide active">
+          <img src="carousel_images/baalbeck.webp" alt="Mountain Landscape" />
+          <div class="slide-text">
+            <a href="destination1.html" class="explore-button">Discover More</a>
+            <p>Beautiful Mountains</p>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
           <img
-            src="earth-svgprop-com.svg"
-            alt="Earth icon"
-            height="32"
-            width="32"
+            src="carousel_images/Castle_Neuschwanstein.jpg"
+            alt="City Skyline"
           />
+          <div class="slide-text">
+            <a href="destination2.html" class="explore-button">Discover More</a>
+            <p>City Adventures</p>
+          </div>
         </div>
-        <div class="links">
-          <span class="link" > <a   href="index.html">home</a></span>
-          <span class="link"> <a href="gallery.html">gallery</a></span>
-          <span class="link"> <a href="feedback.html">feedback</a> </span>
-       
+
+        <!-- Slide 3 -->
+        <div class="slide">
+          <img src="carousel_images/colosseum.jpg" alt="Beach View" />
+          <div class="slide-text">
+            <a href="destination3.html" class="explore-button">Discover More</a>
+            <p>Tropical Beaches</p>
+          </div>
         </div>
-         
-      </nav>
- 
-     <div class="centered-line">
-        <div class="line-title">EXPLORE THE WORLD</div>
-        <p>CHOOSE YOUR FIRST STEP.<br>brbrbrbrb</p>
+
+        <!-- Slide 4 -->
+        <div class="slide">
+          <img
+            src="carousel_images/eiffel_tower.jpg"
+            alt="Mountain Landscape"
+          />
+          <div class="slide-text">
+            <a href="destination4.html" class="explore-button">Discover More</a>
+            <p>Beautiful Mountains</p>
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide">
+          <img src="carousel_images/statue_of_liberty.jpg" alt="City Skyline" />
+          <div class="slide-text">
+            <a href="destination2.html" class="explore-button">Discover More</a>
+            <p>City Adventures</p>
+          </div>
+        </div>
+        <!-- Slide 6 -->
+        <div class="slide">
+          <img src="carousel_images/Louvre_museum.jpg" alt="Beach View" />
+          <div class="slide-text">
+            <a href="destination3.html" class="explore-button">Discover More</a>
+            <p>Tropical Beaches</p>
+          </div>
+        </div>
+        <!-- Add more slides as needed -->
+      </div>
+
+      <!-- Navigation Buttons -->
+      <button class="carousel-btn carousel-prev">&#10094;</button>
+      <button class="carousel-btn carousel-next">&#10095;</button>
+
+      <!-- Dots Indicator -->
+      <div class="carousel-dots">
+        <button class="carousel-dot active" data-slide="0"></button>
+        <button class="carousel-dot" data-slide="1"></button>
+        <button class="carousel-dot" data-slide="2"></button>
+        <button class="carousel-dot" data-slide="3"></button>
+        <button class="carousel-dot" data-slide="4"></button>
+        <button class="carousel-dot" data-slide="5"></button>
+
+        <!-- Add more dots for more slides -->
+      </div>
     </div>
 
+    <button id="backToTopBtn" title="Go to top">↑ Top</button>
+    <div class="centered-line reveal reveal-scale">
+      <div class="line-title">EXPLORE THE WORLD</div>
+      <p>
+        Plan your journey, discover new places,<br />
+        and create memories that last a lifetime.
+      </p>
+    </div>
 
+    <div class="about-section baalbeck">
+      <div class="about-text reveal">
+        <h2>Explore With Confidence</h2>
+        <p>
+          MyTrip is your go-to platform for discovering amazing destinations and
+          planning unforgettable journeys.
+        </p>
+        <p>
+          Scroll down, get inspired, and start planning your next adventure
+          today.
+        </p>
+      </div>
+      <div class="about-image reveal reveal-left">
+        <img src="home_images/img1.jpg" alt="Travel destination" />
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="header-content">
+        <div class="Inner-header reveal reveal-up">
+          <h1>My Trip</h1>
+          <p>
+            Your Journey Starts Here wiith MyTrip - Explore, Discover,
+            Experience!
+          </p>
+        </div>
+      </div>
+    </header>
+    <main class="about-section">
+      <div class="about-image reveal reveal-left">
+        <img src="home_images/img2.webp" alt="Travel destination" />
+      </div>
+
+      <div class="about-text reveal">
+        <h2>Enjoy Your Tour in our website</h2>
+        <p>
+          Look up for amazing monuents all over the WORLD and dont forget to
+          give us your your feedbacks.
+        </p>
+        <p>
+          Scroll down, get inspired, and start planning your next adventure
+          today.
+        </p>
+      </div>
     </main>
-    </body>
-    </html>
+
+    <article>
+      <div class="article1-text">
+        
+        <p>
+          The Statue of Liberty stands as one of the world's most potent and
+          enduring symbols of liberty. Dedicated in 1886, it was a gift from the
+          people of France to the United States, intended as a monument to the
+          centennial of U.S. independence and the shared ideals of freedom and
+          democracy between the two nations. Formally named "Liberty
+          Enlightening the World," the statue's design is rich with symbolism.
+          The figure of a robed woman, holding a torch aloft in her right hand,
+          represents enlightenment. In her left hand, she carries a tablet
+          inscribed with the date of the American Declaration of Independence.
+          Significantly, at her feet lies a broken chain and shackle, a powerful
+          element added to commemorate the abolition of slavery in the United
+          States after the Civil War. From its position on Liberty Island in New
+          York Harbor, the statue became an immediate and iconic symbol of
+          freedom. For millions of immigrants arriving by sea in the late 19th
+          and early 20th centuries, it was their first glimpse of America,
+          transforming it into a beacon of hope and a promise of new beginnings.
+          Today, managed by the National Park Service, it continues to be
+          universally recognized as a testament to the aspirational ideals of
+          liberty, opportunity, and human rights. I hope this article is helpful
+          for your needs. If you would like to explore the topic in greater
+          depth, such as the detailed history of its construction or its role in
+          American culture, I can provide more information.
+        </p>
+        
+      </div>
+      <div class="article1-img">
+        <img src="statusOflib.avif" alt="" />
+      </div>
+    </article>
+
+    <script>
+      // CAROUSEL FUNCTIONALITY
+      const carouselSlides = document.querySelectorAll(".slide");
+      const carouselPrevBtn = document.querySelector(".carousel-prev");
+      const carouselNextBtn = document.querySelector(".carousel-next");
+      const carouselDots = document.querySelectorAll(".carousel-dot");
+      let currentCarouselIndex = 0;
+      let carouselInterval;
+
+      // Show specific slide
+      function showCarouselSlide(index) {
+        // Hide all slides
+        carouselSlides.forEach((slide) => {
+          slide.classList.remove("active");
+        });
+
+        // Remove active from all dots
+        carouselDots.forEach((dot) => {
+          dot.classList.remove("active");
+        });
+
+        // Show selected slide
+        carouselSlides[index].classList.add("active");
+        carouselDots[index].classList.add("active");
+        currentCarouselIndex = index;
+      }
+
+      // Next slide
+      function nextCarouselSlide() {
+        let nextIndex = currentCarouselIndex + 1;
+        if (nextIndex >= carouselSlides.length) {
+          nextIndex = 0;
+        }
+        showCarouselSlide(nextIndex);
+      }
+
+      // Previous slide
+      function prevCarouselSlide() {
+        let prevIndex = currentCarouselIndex - 1;
+        if (prevIndex < 0) {
+          prevIndex = carouselSlides.length - 1;
+        }
+        showCarouselSlide(prevIndex);
+      }
+
+      // Auto-advance slides
+      function startCarouselAutoSlide() {
+        carouselInterval = setInterval(nextCarouselSlide, 5000); // Change every 5 seconds
+      }
+
+      function stopCarouselAutoSlide() {
+        clearInterval(carouselInterval);
+      }
+
+      // Event Listeners
+      carouselNextBtn.addEventListener("click", () => {
+        nextCarouselSlide();
+        stopCarouselAutoSlide();
+        startCarouselAutoSlide(); // Reset timer
+      });
+
+      carouselPrevBtn.addEventListener("click", () => {
+        prevCarouselSlide();
+        stopCarouselAutoSlide();
+        startCarouselAutoSlide(); // Reset timer
+      });
+
+      // Dot navigation
+      carouselDots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          showCarouselSlide(index);
+          stopCarouselAutoSlide();
+          startCarouselAutoSlide(); // Reset timer
+        });
+      });
+
+      // Pause on hover
+      const carouselContainer = document.querySelector(".carousel-container");
+      if (carouselContainer) {
+        carouselContainer.addEventListener("mouseenter", stopCarouselAutoSlide);
+        carouselContainer.addEventListener(
+          "mouseleave",
+          startCarouselAutoSlide
+        );
+      }
+
+      // Initialize
+      showCarouselSlide(0);
+      startCarouselAutoSlide();
+
+      //back to top button
+      const btn = document.getElementById("backToTopBtn");
+
+      window.onscroll = function () {
+        if (window.scrollY > 300) {
+          btn.style.display = "block";
+        } else {
+          btn.style.display = "none";
+        }
+      };
+      btn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      const revealElements = document.querySelectorAll(".reveal");
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              revealObserver.unobserve(entry.target); // animate once
+            }
+          });
+        },
+        {
+          threshold: 0.2,
+        }
+      );
+
+      revealElements.forEach((el) => revealObserver.observe(el));
+    </script>
+  </body>
+</html>

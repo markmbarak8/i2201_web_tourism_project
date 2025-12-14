@@ -9,7 +9,7 @@ nav {
     align-items: center;
     
    
-    background: linear-gradient(135deg, #d6c4c4, #686d8b, #7c5c5c00);
+    background: linear-gradient(135deg, #ecebe5dc, #a5b3a7b2, #ecebe5dc);
     background-size: 200% 200%;
     animation: gentlePulse 5s ease-in-out infinite;
     
@@ -110,3 +110,22 @@ justify-content: space-around;
         font-size: 12px;
     }
 }
+#backToTopBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed on screen */
+  bottom: 40px; /* Spacing from bottom */
+  right: 30px; /* Spacing from right */
+  font-size: 18px;
+  padding: 12px 16px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+#backToTopBtn:hover {
+  background-color: #555;
+}
+ C:\Users\moham\OneDrive\Desktop\web project collage LU\i2201_web_tourism_project\monuments\Castle_Neuschwanstein_photos\photo_3.jpg
