@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Temple of Jupiter (Baalbek)</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: "Oswald", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f9fa;
+      }
+      
+      header {
+        text-align: center;
+        padding: 2rem 1rem;
+        background-color: #f2f2f2;
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+        background: linear-gradient(135deg, #f2f2f2 0%, #e0e0e0 100%);
+      }
+      
+      header h3 {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+        margin-top: 0.5rem;
+        color: #666;
+        font-weight: 300;
+      }
+      
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+      
+      section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 3rem;
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(136, 136, 136, 0.15);
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      section:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+      
+      .content {
+        flex: 1;
+        min-width: 300px;
+      }
+      
+      .content p {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        line-height: 1.8;
+      }
+      
+      .image-container {
+        flex: 1;
+        min-width: 300px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      
+      .image-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+      
+      .image-container:hover img {
+        transform: scale(1.03);
+      }
+      
+      .bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem 1rem;
+        text-align: center;
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(136, 136, 136, 0.15);
+      }
+      
+      .bottom p {
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        margin-bottom: 1.5rem;
+        color: #333;
+      }
+      
+      .bottom a input {
+        padding: 0.8rem 2rem;
+        font-size: 1.1rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        font-family: "Oswald", sans-serif;
+        font-weight: 500;
+      }
+      
+      .bottom a input:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        section {
+          flex-direction: column !important;
+          gap: 2rem;
+          padding: 1.5rem;
+        }
+        
+        .content, .image-container {
+          min-width: 100%;
+        }
+        
+        main {
+          gap: 2.5rem;
+        }
+        
+        header {
+          padding: 1.5rem 1rem;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        section {
+          padding: 1rem;
+          gap: 1.5rem;
+        }
+        
+        .bottom {
+          padding: 2rem 1rem;
+        }
+        
+        .bottom p {
+          font-size: 1.2rem;
+        }
+      }
+      
+      /* Back to top button */
+     
+      
+      #backToTopBtn:hover {
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+      <nav>
+      <div class="icon">
+        <img
+          src="logo.png"
+          alt="Earth icon"
+          height="32"
+          width="32"
+        />
+      </div>
+      <div class="links">
+        <span class="link"> <a href="../index.html">home</a></span>
+        <span class="link"> <a href="../gallery.html">gallery</a></span>
+        <span class="link"> <a href="../feedback.html">feedback</a> </span>
+      </div>
+    </nav>
+    <header>
+      <h1>Temple of Jupiter (Baalbek)</h1>
+      <h3>explore more about this amazing ancient Temple</h3>
+    </header>
+    
+    <main>
+      <section class="section-observer">
+        <div class="image-container">
+          <img src="baalbeck_photos/photo_3.jpg" alt="Temple of Jupiter exterior view" />
+        </div>
+        <div class="content">
+          <p>
+            Baalbek, also known as Heliopolis, is an ancient city located in the
+            Beqaa Valley of Lebanon. It is renowned for its impressive Roman
+            ruins, including the Temple of Bacchus and the Temple of Jupiter,
+            which are among the largest and best-preserved Roman temples in the
+            world. Baalbek has a rich history that dates back to ancient times
+            and has been a significant cultural and religious center throughout
+            various civilizations.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-observer">
+        <div class="content">
+          <p>
+            The Temple of Jupiter is particularly famous for its massive stone
+            blocks, some weighing over 800 tons. These megalithic stones are
+            among the largest ever used in construction, demonstrating the
+            incredible engineering capabilities of the Roman builders who
+            constructed this monumental temple complex in the 1st century AD.
+          </p>
+        </div>
+        <div class="image-container">
+          <img src="baalbeck_photos/Baalbek-entrance.jpg" alt="Entrance to Baalbek ruins" />
+        </div>
+      </section>
+
+      <section class="section-observer">
+        <div class="image-container">
+          <img src="baalbeck_photos/photo_1.webp" alt="Detailed view of temple columns" />
+        </div>
+        <div class="content">
+          <p>
+            The temple's six remaining columns stand at an impressive 22 meters
+            high, making them the tallest Roman columns in the world. Originally,
+            there were 54 such columns surrounding the temple, each crafted from
+            single pieces of granite transported from Egypt, showcasing the vast
+            reach and resources of the Roman Empire.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-observer">
+        <div class="content">
+          <p>
+            The site was originally a Phoenician temple dedicated to the god
+            Baal, which the Romans later transformed into a temple for Jupiter.
+            This religious continuity across civilizations makes Baalbek a unique
+            archaeological site, representing layers of cultural and religious
+            history spanning over 2,000 years.
+          </p>
+        </div>
+        <div class="image-container">
+          <img src="baalbeck_photos/photo_2.jpg" alt="Ancient stone carvings at Baalbek" />
+        </div>
+      </section>
+
+      <section class="section-observer">
+        <div class="image-container">
+          <img
+            src="baalbeck_photos/Ruins-Temple-of-Jupiter-Lebanon-Baalbeck.webp"
+            alt="Panoramic view of temple ruins"
+          />
+        </div>
+        <div class="content">
+          <p>
+            Today, Baalbek is a UNESCO World Heritage Site and one of Lebanon's
+            most visited tourist attractions. The annual Baalbeck International
+            Festival brings world-class performances to the ancient ruins,
+            creating a magical fusion of contemporary arts and ancient
+            architecture under the stars.
+          </p>
+        </div>
+      </section>
+      
+      <div class="bottom">
+        <p>
+          Go check the German castle (Neuschwanstein Castle) - one of the best
+          castles in the world
+        </p>
+        <a href="louvre_museum.html">
+          <input type="button" value="Explore louvre museum" />
+        </a>
+      </div>
+    </main>
+
+    <button id="backToTopBtn" title="Back to top">↑ Top</button>
+ 
+     <footer>
+      <div id="footercont">
+        <div id="footerlinks">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../gallery.html">Gallery</a></li>
+            <li><a href="../feedback.html">Feedback</a></li>
+          </ul>
+        </div>
+        <div id="footerform">
+          <form name="form" method="post" id="order">
+            <h3>Join our newsletter to get notified!!</h3>
+            <label for="first_name">First name: </label>
+            <input
+              id="first_name"
+              type="text"
+              required="required"
+            /><br /><br />
+            <label for="Last name">Last Name: </label>
+            <input id="Last name" type="text" required="required" /><br /><br />
+            <label for="email">E-mail: </label>
+            <input id="email" type="email" required="required" />
+            <input type="submit" value="Subscribe" id="subbutton" />
+          </form>
+        </div>
+      </div>
+      <p><i>Copyright&copy2025</i></p>
+    </footer>
+
+    <script>
+      // Back to Top Button Functionality
+      const btn = document.getElementById("backToTopBtn");
+
+      window.onscroll = function () {
+        if (window.scrollY > 300) {
+          btn.style.display = "block";
+        } else {
+          btn.style.display = "none";
+        }
+      };
+      
+      btn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Intersection Observer for sections
+      document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.section-observer');
+        
+        // Create Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              
+              // Optional: Stop observing after animation
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1, // Trigger when 10% of section is visible
+          rootMargin: '0px 0px -50px 0px' // Adjust trigger point
+        });
+
+        // Observe each section
+        sections.forEach(section => {
+          observer.observe(section);
+        });
+
+        // Optional: Pre-load images for better user experience
+        const images = document.querySelectorAll('.image-container img');
+        images.forEach(img => {
+          if (img.complete) {
+            // Image already loaded
+            img.style.opacity = '1';
+          } else {
+            // Fade in image when loaded
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.3s ease';
+            img.addEventListener('load', function() {
+              this.style.opacity = '1';
+            });
+          }
+        });
+      });
+
+      // Optional: Add keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          document.getElementById('backToTopBtn').focus();
+        }
+      });
+
+    
+      // Initial call and resize listener
+      handleResponsiveImages();
+      window.addEventListener('resize', handleResponsiveImages);
+    </script>
+  </body>
+</html>

@@ -6,13 +6,205 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feedback</title>
     <link rel="stylesheet" href="style.css" />
-</head>
+    <style>
+ /* General reset for better responsiveness */
+* {
+    box-sizing: border-box;
+}
+
+/* Background */
+body {
+    background-image: url(worldmap.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(250, 248, 248, 0.95);
+    background-blend-mode: overlay;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main container */
+main {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Section layout */
+section {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 65%;
+    padding: 3rem;
+    background-color: #ffffff;
+    border-radius: 24px; /* FIX: px instead of % */
+    
+    /* REMOVE fixed height */
+    min-height: 45vh;
+
+    animation: sectionFade 0.8s ease-out forwards;
+}
+
+/* animation */
+@keyframes sectionFade {
+    from {
+        opacity: 0;
+        transform: translate(40px, 40px);
+    }
+    to {
+        opacity: 0.7;
+        transform: translate(0, 0);
+    }
+}
+
+/* Left text */
+.text-left {
+    font-size: 2.2rem;
+    max-width: 45%; /* FIX */
+}
+
+/* make <pre> wrap on small screens */
+.text-left pre {
+    white-space: pre-wrap;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Form container */
+.feedback-form {
+    background-color: #f9f9f9;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 420px; /* FIX: stable card width */
+    border-radius: 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedback-form:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(94, 93, 93, 0.2);
+}
+
+/* Form text */
+.feedback-form h2 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.feedback-form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Button */
+.feedback-form button {
+    background-color: #d3e1fc;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    color: black;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feedback-form button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px #a3c0fa;
+}
+
+.feedback-form button:active {
+    transform: scale(0.97);
+}
+
+/* ========================= */
+/* Responsive breakpoints   */
+/* ========================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    section {
+        width: 90%;
+        padding: 2rem;
+    }
+
+    .text-left {
+        max-width: 50%;
+        font-size: 2rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    section {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .text-left {
+        max-width: 100%;
+        font-size: 1.7rem;
+    }
+
+    .feedback-form {
+        max-width: 100%;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    main {
+        padding: 1rem;
+    }
+
+    section {
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .text-left {
+        font-size: 1.4rem;
+    }
+
+    .feedback-form {
+        padding: 1.5rem;
+    }
+}
+.error {
+    color: red;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.success {
+    color: green;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+
+    </style>
+    </head>
 
 <body>
-    <main>
+    
         <nav>
             <div class="icon">
-                <img src="earth-svgprop-com.svg" alt="Earth icon" height="32" width="32" />
+                <img src="logo.png" alt="Earth icon" height="32" width="32" />
             </div>
             <div class="links">
                 <span class="link"> <a href="index.html">home</a></span>
@@ -21,7 +213,44 @@
             </div>
         </nav>
         <button id="backToTopBtn" title="Go to top">↑ Top</button>
-    </main>
+   <main>
+    <section>
+        <div class="text-left">
+            <pre>Get in touch with us &
+send us message today!</pre>
+
+<pre>
+We would love to hear 
+ your thoughts, suggestions, or any
+  questions you may have about our
+   tourism website.
+</pre>
+        </div>
+
+        <div class="feedback-form">
+            <h2>We value your feedback!</h2>
+
+            <form action="#" method="post" novalidate>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required />
+                <p class="error" id="nameError"></p>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+                <p class="error" id="emailError"></p>
+
+                <label for="comments">Comments:</label>
+                <textarea id="comments" name="comments" rows="4"></textarea>
+                <p class="error" id="messageError"></p>
+
+                <button type="submit">Submit Feedback</button>
+
+                <p class="success" id="successMsg"></p>
+            </form>
+        </div>
+    </section>
+</main>
+
     <footer>
       <div id="footercont">
       <div id="footerlinks">
@@ -32,6 +261,7 @@
       </ul>
       </div>
       <div id="footerform">
+
       <form name="form" method="post" id="order">
         <h3>Join our newsletter to get notified!!</h3>
         <label for="first_name">First name: </label>
@@ -45,6 +275,89 @@
       </div>
       </div>
       <p><i>Copyright&copy2025</i></p>
+      <script>
+const form = document.querySelector(".feedback-form form");
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const comments = document.getElementById("comments");
+
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const messageError = document.getElementById("messageError");
+    const successMsg = document.getElementById("successMsg");
+
+    // reset messages
+    nameError.textContent = "";
+    emailError.textContent = "";
+    messageError.textContent = "";
+    successMsg.textContent = "";
+
+    let valid = true;
+
+    if (name.value.trim().length < 2) {
+        nameError.textContent = "Name must be at least 2 characters.";
+        valid = false;
+    }
+
+    if (!email.checkValidity()) {
+        emailError.textContent = "Please enter a valid email.";
+        valid = false;
+    }
+
+    if (comments.value.trim().length < 15) {
+        messageError.textContent = "Message must be at least 15 characters.";
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    // ✅ Save to localStorage
+    const feedback = {
+        name: name.value,
+        email: email.value,
+        message: comments.value,
+        date: new Date().toISOString()
+    };
+
+    localStorage.setItem("feedback", JSON.stringify(feedback));
+
+    successMsg.textContent = "Thank you! Your feedback has been saved.";
+    form.reset();
+
+});
+ // Highlight active nav link 
+const navLinks = document.querySelectorAll("nav a");
+const currentPage = window.location.pathname.split("/").pop();
+
+navLinks.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+    }
+});
+
+// Back to Top button functionality
+const btn = document.getElementById("backToTopBtn");
+
+      window.onscroll = function () {
+        if (window.scrollY > 300) {
+          btn.style.display = "block";
+        } else {
+          btn.style.display = "none";
+        }
+      };
+      btn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+</script>
+
     </footer>
 </body>
 

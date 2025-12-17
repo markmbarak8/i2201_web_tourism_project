@@ -393,25 +393,68 @@
         transform: translateX(0);
       }
       .baalbeck {
-        background-color: #dbe9dd;
+        background: #eceff3ba;
       }
       article {
         width: 100%;
         display: flex;
         align-items: flex-start;
+        padding-top: 2%;
+        transition: background-color 0.6s ease;
+      }
+      article:hover {
+        background-color: rgba(255, 255, 255, 0.05);
       }
       .article1-img {
         width: 50%;
-         position: sticky;
-  top: 20px; /* distance from top when sticking */
-  height: fit-content
+        position: sticky;
+        top: 8%; /* distance from top when sticking */
+        height: fit-content;
+        display: flex;
+        justify-content: center;
       }
       .article1-img img {
-        width: 100%;
-        
+        width: 90%;
+        border-radius: 2%;
+        transition: transform 0.6s ease, box-shadow 0.6s ease;
+      }
+      .article1-img:hover img {
+        transform: scale(1.05);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
       }
       .article1-text {
         width: 50%;
+      }
+      .article1-text-container {
+        font-size: 150%;
+        width: 100%;
+      }
+      .article-text-right {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        width: 40%;
+
+        margin-left: 50%;
+        background-color: #ffffffdc;
+        padding: 2%;
+        border-radius: 5%;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+      }
+      .article-text-left {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        text-align: left;
+        width: 40%;
+        margin-left: 10%;
+        background-color: #ffffffdc;
+        padding: 2%;
+        border-radius: 5%;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+      }
+      .article-text-left:hover,
+      .article-text-right:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
       }
     </style>
   </head>
@@ -419,12 +462,7 @@
   <body>
     <nav>
       <div class="icon">
-        <img
-          src="earth-svgprop-com.svg"
-          alt="Earth icon"
-          height="32"
-          width="32"
-        />
+        <img src="logo.png" alt="Earth icon" height="32" width="32" />
       </div>
       <div class="links">
         <span class="link"> <a href="index.html">home</a></span>
@@ -439,8 +477,10 @@
         <div class="slide active">
           <img src="carousel_images/baalbeck.webp" alt="Mountain Landscape" />
           <div class="slide-text">
-            <a href="destination1.html" class="explore-button">Discover More</a>
-            <p>Beautiful Mountains</p>
+            <a href="monuments\baalbeck.html" class="explore-button"
+              >Discover More</a
+            >
+            <p>baalbeck castle</p>
           </div>
         </div>
 
@@ -568,40 +608,105 @@
       </div>
     </main>
 
-    <article>
+    <article class="baalbeck reveal">
       <div class="article1-text">
-        
-        <p>
-          The Statue of Liberty stands as one of the world's most potent and
-          enduring symbols of liberty. Dedicated in 1886, it was a gift from the
-          people of France to the United States, intended as a monument to the
-          centennial of U.S. independence and the shared ideals of freedom and
-          democracy between the two nations. Formally named "Liberty
-          Enlightening the World," the statue's design is rich with symbolism.
-          The figure of a robed woman, holding a torch aloft in her right hand,
-          represents enlightenment. In her left hand, she carries a tablet
-          inscribed with the date of the American Declaration of Independence.
-          Significantly, at her feet lies a broken chain and shackle, a powerful
-          element added to commemorate the abolition of slavery in the United
-          States after the Civil War. From its position on Liberty Island in New
-          York Harbor, the statue became an immediate and iconic symbol of
-          freedom. For millions of immigrants arriving by sea in the late 19th
-          and early 20th centuries, it was their first glimpse of America,
-          transforming it into a beacon of hope and a promise of new beginnings.
-          Today, managed by the National Park Service, it continues to be
-          universally recognized as a testament to the aspirational ideals of
-          liberty, opportunity, and human rights. I hope this article is helpful
-          for your needs. If you would like to explore the topic in greater
-          depth, such as the detailed history of its construction or its role in
-          American culture, I can provide more information.
-        </p>
-        
+        <div class="article1-text-container reveal reveal-left">
+          <div class="article-text-left">
+            The Statue of Liberty stands as one of the world's most potent and
+            enduring symbols of liberty. Dedicated in 1886, it was a gift from
+            the people of France to the United States, intended as a monument to
+            the centennial of U.S. independence and the shared ideals of freedom
+            and democracy between the two nations
+          </div>
+          <div class="article-text-right">
+            Formally named "Liberty Enlightening the World," the statue's design
+            is rich with symbolism. The figure of a robed woman, holding a torch
+            aloft in her right hand, represents enlightenment. In her left hand,
+            she carries a tablet inscribed with the date of the American
+            Declaration of Independence. Significantly, at her feet lies a
+            broken chain and shackle, a powerful element added to commemorate
+            the abolition of slavery in the United States after the Civil War.
+          </div>
+          <div class="article-text-left">
+            From its position on Liberty Island in New York Harbor, the statue
+            became an immediate and iconic symbol of freedom. For millions of
+            immigrants arriving by sea in the late 19th and early 20th
+            centuries, it was their first glimpse of America, transforming it
+            into a beacon of hope and a promise of new beginnings. Today,
+            managed by the National Park Service, it continues to be universally
+            recognized as a testament to the aspirational ideals of liberty,
+            opportunity, and human rights.
+          </div>
+        </div>
       </div>
+
       <div class="article1-img">
         <img src="statusOflib.avif" alt="" />
       </div>
     </article>
+    <article class="baalbeck reveal">
+      <div class="article1-img">
+        <img src="GettyImages-955441104.webp" alt="" />
+      </div>
+      <div class="article1-text">
+        <div class="article1-text-container reveal reveal-left">
+          <div class="article-text-left">
+            The Eiffel Tower is one of the most recognizable landmarks in the
+            world and a powerful symbol of France. Located in Paris on the Champ
+            de Mars, it was designed by engineer Gustave Eiffel and constructed
+            between 1887 and 1889 for the 1889 World’s Fair, which celebrated
+            the 100th anniversary of the French Revolution. Standing at
+            approximately 330 meters, the tower was the tallest man-made
+            structure in the world at the time of its completion.
+          </div>
+          <div class="article-text-right">
+            Initially, the Eiffel Tower faced strong criticism from artists and
+            intellectuals who considered it an eyesore. However, public opinion
+            gradually shifted, and the tower became admired for its innovative
+            iron lattice design and engineering brilliance. Although it was
+            originally intended to be dismantled after 20 years, its usefulness
+            for radio transmissions saved it from demolition.
+          </div>
+          <div class="article-text-left">
+            Today, the Eiffel Tower is one of the most visited paid monuments
+            globally, attracting millions of tourists each year. Visitors can
+            ascend the tower using elevators or stairs to enjoy panoramic views
+            of Paris. Beyond tourism, the tower represents technological
+            progress, artistic creativity, and national pride, making it an
+            enduring icon of both Paris and modern engineering.
+          </div>
+        </div>
+      </div>
+    </article>
 
+    <footer>
+      <div id="footercont">
+        <div id="footerlinks">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+          </ul>
+        </div>
+        <div id="footerform">
+          <form name="form" method="post" id="order">
+            <h3>Join our newsletter to get notified!!</h3>
+            <label for="first_name">First name: </label>
+            <input
+              id="first_name"
+              type="text"
+              required="required"
+            /><br /><br />
+            <label for="Last name">Last Name: </label>
+            <input id="Last name" type="text" required="required" /><br /><br />
+            <label for="email">E-mail: </label>
+            <input id="email" type="email" required="required" />
+            <input type="submit" value="Subscribe" id="subbutton" />
+          </form>
+        </div>
+      </div>
+      <p><i>Copyright&copy2025</i></p>
+    </footer>
     <script>
       // CAROUSEL FUNCTIONALITY
       const carouselSlides = document.querySelectorAll(".slide");
@@ -726,6 +831,16 @@
       );
 
       revealElements.forEach((el) => revealObserver.observe(el));
+      // Highlight active nav link
+
+      const navLinks = document.querySelectorAll("nav a");
+      const currentPage = window.location.pathname.split("/").pop();
+
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentPage) {
+          link.classList.add("active");
+        }
+      });
     </script>
   </body>
 </html>

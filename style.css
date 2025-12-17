@@ -9,7 +9,7 @@ nav {
     align-items: center;
     
    
-    background: linear-gradient(135deg, #ecebe5dc, #a5b3a7b2, #ecebe5dc);
+    background: linear-gradient(135deg, #ecebe5dc,#d3e1fc, #ecebe5dc);
     background-size: 200% 200%;
     animation: gentlePulse 5s ease-in-out infinite;
     
@@ -35,13 +35,18 @@ nav:hover {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.247);
 }
 .icon{
-    margin-left: 1%;
+    margin-left: 4%;
+    width: 55%;
 }
-
+.icon img {
+    width: 5%;
+    height: fit-content;
+}
 .links{
     width: 20%;
 display: flex;
 justify-content: space-around;
+font-size: 150%;
 }
 
 .link {
@@ -86,28 +91,74 @@ justify-content: space-around;
 
 /* Active link style */
 
-
-
-
-@media (max-width: 768px) {
-    .links {
-        width: 50%;
+@media (max-width: 1440px) {
+    nav {
+        padding: 2vh 4%;
     }
-    
+
+    .icon {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .icon img {
+        width: 52px; /* FIX: readable icon */
+    }
+
+    .links {
+        width: auto;
+        gap: 14px;
+        font-size: 140%;
+    }
+
     .link a {
-        padding: 4px 8px;
-        font-size: 14px;
+        padding: 6px 10px;
     }
 }
 
-@media (max-width: 480px) {
-    .links {
-        width: 70%;
+@media (max-width: 768px) {
+    nav {
+        padding: 2vh 4%;
     }
-    
+
+    .icon {
+        margin-left: 0;
+        width: auto;
+    }
+
+    .icon img {
+        width: 32px; /* FIX: readable icon */
+    }
+
+    .links {
+        width: auto;
+        gap: 12px;
+        font-size: 120%;
+    }
+
     .link a {
-        padding: 3px 6px;
-        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+    nav {
+        flex-direction: row;
+        padding: 1.5vh 4%;
+    }
+
+    .icon img {
+        width: 28px;
+    }
+
+    .links {
+        gap: 8px;
+        font-size: 105%;
+    }
+
+    .link a {
+        padding: 5px 8px;
     }
 }
 #backToTopBtn {
@@ -176,4 +227,9 @@ footer{
 footer p{
     font-size:xx-small;
     margin-left: 20%;
+}
+nav a.active {
+    color: #3a6cf4;
+    font-weight: bold;
+    border-bottom: 2px solid #3a6cf4;
 }
